@@ -1,13 +1,9 @@
-version: 2
-jobs:
-  build:
-    docker:
-      - image: ubuntu:latest
-    steps:
-      - checkout
-      - run:
-          name: Greeting
-          command: echo Hello, world.
-      - run:
-          name: Print the Current Time
-          command: date
+deployment:
+  prod:
+    branch: master
+    commands:
+      - sudo sshpass -p "$DIGITALOCEAN" rsync -avz ./srt-resume.html $DIGITALOCEAN_IP:/var/www/html/
+      
+test:
+  override:
+    - "true"
