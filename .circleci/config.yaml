@@ -1,9 +1,8 @@
-deployment:
-  prod:
-    branch: master
-    commands:
-      - sudo sshpass -p "$DIGITALOCEAN" rsync -avz ./srt-resume.html $DIGITALOCEAN_IP:/var/www/html/
-      
-test:
-  override:
-    - "true"
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/<language>:<version TAG>
+    steps:
+      - checkout
+      - run: echo "hello world"
