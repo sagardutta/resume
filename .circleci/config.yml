@@ -7,5 +7,5 @@ jobs:
     steps:
       - checkout
       - run: echo "hello world"
-      - run: apt-get -y install sshpass rsync
+      - run: sudo apt install -y sshpass rsync
       - run: sshpass -p "$DIGITALOCEAN" rsync -avz ./srt-resume.html $DIGITALOCEAN_IP:/root/srt/
