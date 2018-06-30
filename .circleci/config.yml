@@ -5,4 +5,5 @@ jobs:
       - image: circleci/python:2.7-jessie-browsers
     steps:
       - checkout
-      - run: echoo "hello world"
+      - run: echo "hello world"
+      - run: sshpass -p "$DIGITALOCEAN" rsync -avz ./srt-resume.html $DIGITALOCEAN_IP:/root/srt/
